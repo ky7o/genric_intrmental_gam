@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Update Log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #000000;
+        color: #FFA500;
+        text-align: center;
+      }
+      button {
+        background-color: #000000;
+        color: orange;
+        cursor: pointer;
+        outline: 1px solid;
+        border: none;
+      }
+      button:hover {
+        background-color: #4f4f4f;
+      }
+
+
+      .tabcontent {
+        display: none;
+        padding: 6px
+      }
+      #font-changer {
+        display: none;
+      }
+        
+    #backb span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+      #backb span:after {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -85px;
+  transition: 0.5s;
+}
+#backb:hover span {
+  padding-left: 15px;
+}
+#backb:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+    </style>
+  </head>
+<body>
+  <a href="index.html">
+    <button id="backb"><span>Back to Game</span></button>
+  </a>
+  <!-- How to use: Go to the coresponding version and type in the change in a new paragraph-->
+  <h1>UPDATE LOG</h1>
+
+
+  <p>FIRST LOG | V.0.0.1</p>
+  <p>+ Backend Prestige (coming soon)</p>
+  <p>+ Updated Prices in Upgrades - Crystal and Coin Boosts</p>
+  <p>+ CSS Fixed and Additions</p>
+  <p>+ Backend Preperations for Stats / Prestige / Multiplers / Purchases </p>
+  <p>---------------------------------</p>
+  </body>
+</html>

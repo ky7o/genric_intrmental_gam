@@ -1,0 +1,373 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>genric intrmental gam</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="script.js"></script>
+    <script>
+  window.addEventListener('beforeunload', function() {
+    localStorage.setItem('myData', JSON.stringify(myData));
+  });
+</script>
+    <style type="text/css">
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: black;
+        color: #FFA500;
+        text-align: center;
+      }
+      button {
+        background-color: black;
+        color: orange;
+        cursor: pointer;
+        outline: 1px solid;
+        border: none;
+        
+      }
+      button:hover {
+        background-color: grey;
+      }
+      .tab {
+  overflow: hidden;
+  border-bottom: 1px solid orange; /* add a 1px white line under the tab buttons */
+  background-color: black;
+}
+
+
+      .tab button {
+  background-color: #000000;
+  color: orange;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+
+
+
+.tab button:hover {
+  background-color: #4f4f4f;
+  transform: scale(1.02); /* added */
+  box-shadow: 0 0 10px rgba(0,0,0,0.2); /* added */
+  border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+
+}
+      /*.tab button:active {
+        transform: scale(1.5)
+      } */
+      
+/* dosent work yet */
+.tab button.active {
+  background-color: <active-tab-color>;
+  color: black;
+  cursor: default;
+  outline: none;
+  border-bottom-color: <active-tab-color>; /* change border color of active tab */
+}
+/* colors of tabs and stuff */
+.tab button:nth-child(1) {
+ outline: 2px solid orange;
+  color: orange;
+  
+}
+
+.tab button:nth-child(1).active {
+  background-color: orange;
+  color: black;
+      outline: 2px solid orange;
+}
+
+.tab button:nth-child(2) {
+ outline: 2px solid 	#FF00FF;
+        color: 	#FF00FF;
+}
+
+.tab button:nth-child(2).active {
+  background-color: #FF00FF;
+  color: black;
+  outline: 2px solid #FF00FF;
+}
+
+.tab button:nth-child(3) {
+outline: 2px solid white;
+  color: white;
+}
+      .tab button.active:nth-child(3) {
+  background-color: white;
+  color: black;
+  outline: 2px solid white;
+}
+      .tab button:nth-child(4) {
+outline: 2px solid blue;
+  color: blue;
+}
+      .tab button.active:nth-child(4) {
+  background-color: blue;
+  color: black;
+  outline: 2px solid blue;
+}   
+      .tab button:nth-child(5) {
+outline: 2px solid aqua;
+  color: aqua;
+}
+
+      .tab button.active:nth-child(5) {
+  background-color: aqua;
+  color: black;
+  outline: 2px solid aqua;
+}
+     .tabcontent {
+  display: none;
+  padding: 6px;
+}
+
+#font-changer {
+  display: none;
+}
+      .tab button:nth-child(6) {
+outline: 2px solid green;
+  color: green;
+}
+      .tab button.active:nth-child(6) {
+  background-color: green;
+  color: black;
+  outline: 2px solid green;
+}
+      /* Update Log Button */
+      
+      #update span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+      #update span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -5px;
+  transition: 0.5s;
+}
+
+#update:hover span {
+  padding-right: 15px;
+}
+
+#update:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+      /* RESET BUTTON */
+      #reset-progress-btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#reset-progress-btn span:before,
+#reset-progress-btn span:after {
+  content: '\26A0';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  transition: 0.5s;
+}
+
+#reset-progress-btn span:before {
+  left: -3px;
+}
+
+#reset-progress-btn span:after {
+  right: -3px;
+}
+
+#reset-progress-btn:hover span {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+#reset-progress-btn:hover span:before,
+#reset-progress-btn:hover span:after {
+  opacity: 1;
+}
+      #reset-progress-btn:hover {
+        background-color: red;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>genric intrmental gam</h1>
+    <p>
+      <img
+        src="https://cdn.glitch.global/5aa86343-095b-4e79-b6a7-c5aa1a0f4506/coins-xxl.png?v=1679590249297"
+        height="20"
+      />
+      <span id="coinCount">-</span>
+    </p> 
+    <p>
+      <img
+        src="https://cdn.glitch.global/5aa86343-095b-4e79-b6a7-c5aa1a0f4506/diamond-xxl.png?v=1679594976556"
+        height="20"
+      />
+      <span id="crystalsCount">-</span>
+      
+    </p>
+    <p>
+      <!--- PRESTIGE THING --->
+    </p>
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'Tab1')">
+        Coin Buildings
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'Tab2')">
+        Crystal Buildings
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'Tab3')">
+        Upgrades
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'Tab6')">
+        Shop
+      </button>
+      <button class="tablinks" onclick="openTab(event, 'Tab4')">
+        Settings
+      </button> 
+      <button class="tablinks" onclick="openTab(event, 'Tab5')">
+        Stats For Nerds  
+      </button>
+     
+    </div>
+    <div id="Tab1" class="tabcontent">
+      <p>Multiplier: <span id="multiplier">0x</span> | Prestige: <span id="prestigeCount">0</span></p>
+      <p>Workers: <span id="workerCount">0 :(</span></p>
+      <!-- Working on something with the worker cost, It will be awhile till fixed though -->
+      <p>Worker Cost: <span id="workerCost">50</span> Coins</p>
+      <button id="hireWorkerButton">Hire Worker</button>
+      <div id="workerError" style="color: red"></div>
+      <div id="machines" style="display: none">
+        <p>Machines: <span id="machinesCount">0 :(</span></p>
+        <p>Machines Cost: <span id="machinesCost">10000</span> Coins</p>
+        <button id="buyMachineButton">Buy Machines</button>
+        <div id="machinesError" style="color: red"></div>
+      </div>
+      <div id="dynamite" style="display: none">
+        <p>Dynamite: <span id="dynamiteCount">0 :(</span></p>
+        <p>Dynamite Cost: <span id="dynamiteCost">50000</span> Coins</p>
+        <button id="buyDynamiteButton">Buy Dynamite</button>
+        <div id="dynamiteError" style="color: red"></div>
+      </div>
+      <div id="drills" style="display: none">
+        <p>Drills: <span id="drillsCount">0 :(</span></p>
+        <p>Drills Cost: <span id="drillsCost">125000</span> Coins</p>
+        <button id="buyDrillButton">Buy Drills</button>
+        <div id="drillsError" style="color: red"></div>
+      </div>
+      <div id="dupes" style="display: none">
+        <p>Dupe Devices: <span id="dupesCount">0 :(</span></p>
+        <p>Dupe Devices Cost: <span id="dupesCost">2000000</span> Coins</p>
+        <button id="buyDupeButton">Buy Dupe Devices</button>
+        <div id="dupesError" style="color: red"></div>
+      </div>
+    </div>
+
+    <div id="Tab2" class="tabcontent">
+      <p>Crystal Workers: <span id="cworkerCount">0 :(</span></p>
+      <p>Crystal Workers Cost: <span id="cworkerCost">5,000,000</span> Coins</p>
+      <button id="hireCworkerButton">Hire Crystal Worker</button>
+      <div id="cworkerError" style="color: red"></div>
+      <div id="wizards" style="display: none">
+      <p>Wizards: <span id="wizardCount">0</span></p>
+      <p>Wizards Cost: <span id="wizardCost">10000000</span> Coins</p>
+      <button id="hirewizardButton"> Hire Wizard </button>
+      <div id= "wizardError" style="color: red"></div>
+    </div>
+    </div>
+
+    <div id="Tab3" class="tabcontent">
+      <p>Coin Boost = 2,500 Crystals</p>
+      <button id="buyboostCoinsButton">Coin Booster</button>
+      <div id="boostError" style="color: red"></div>
+      <p>Coin booster gives +50% coin boost</p>
+      <p>Crystal Boost = 10,000 Crystals</p>
+      <button id="boostCrystalButton">Crystal Boost</button>
+      <div id="cboostError" style="color: red"></div>
+      <p>Crystal booster gives +10% Cyrstals</p>
+    </div>
+    <div id="Tab4" class="tabcontent">
+      <p>
+        <label for="color-picker">Choose a color:</label>
+        <input type="color" id="color-picker" name="color-picker">
+        <button id="apply-color">Apply color</button>
+      </p>
+      <div id="font-changer">
+        <h3>Change Font:</h3>
+        <select onchange="changeFont()">
+          <option value="sans-serif">Sans-serif</option>
+          <option value="serif">Serif</option>
+          <option value="monospace">Monospace</option>
+        </select>
+      </div>
+
+      <script>
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+      }
+      </script>
+      <h3>- MISC -</h3>
+      <button id="reset-progress-btn"><span>RESET PROGRESS</span></button>
+    </div>
+    <div id="Tab5" class="tabcontent">
+      <p>Time Spent on Site: <span id="time-spent"></span></p>
+      <p>Most Coins Earned: <span id="most-coins"></span></p>
+      <a href="update.html"><button id="update"><span>Update Log</span></button></a>
+      </div>
+        <p>Developer  Version</p>
+   <div id="Tab6" class="tabcontent">
+      <h1>
+        To be created
+      </h1>
+      <div id="energy" style="display: none">
+        <p>EnergyCell: <span id="energyCount">0 :(</span></p>
+        <p>EnergyCell Cost: <span id="energyCost">200000</span></p>
+        <button onclick="buyEnergy()">Buy EnergyCell</button>
+        <div id="energyError" style="color: red"></div>
+      </div> 
+    </div>
+    <div class="credits-box">
+      <h2>Credits</h2>
+      <footer>
+       dev: ky7o
+      </footer>
+      <footer>
+yes dev verison because no release yet
+      </footer>
+      <p>
+      <a href="https://discord.gg/JYW2SdyxAZ" target="_blank">
+        <img src="https://cdn.glitch.global/968fa6d4-02ee-473e-af12-4af8b996ddce/download-removebg-preview.png?v=1679669827091" height="30"/></a>
+      <a href="https://patreon.com/MinerTest" target="_blank">
+        <img src= "https://cdn.glitch.global/968fa6d4-02ee-473e-af12-4af8b996ddce/Patreon-Emblem.png?v=1679674827496" height= "30"/>
+      </a>
+      </p>
+    </div>
+  </body>
+</html>
