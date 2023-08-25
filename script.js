@@ -24,10 +24,10 @@
   
   const machinesFactor = 1.1;
   const dynamiteFactor = 1.15;
-  const drillsFactor = 1.15;
-  const dupesFactor = 1.2;
-  const cworkersFactor = 1.15;
-  const wizardFactor = 1.2;
+  const drillsFactor = 1.25;
+  const dupesFactor = 1.4;
+  const cworkersFactor = 1.55;
+  const wizardFactor = 1.77;
   
   function getStateObject() {
     return {
@@ -83,7 +83,7 @@
   }
   
   function mainTicker() {
-    coins += (workers * 20) + (machines * 200) + (dynamite * 5500) + (drills * 25000) + (dupes * 50000) - (energy * 100);
+    coins += (workers * 20) + (machines * 200) + (dynamite * 500) + (drills * 1000) + (dupes * 2500) - (energy * 10000);
     updateCounts();
 
     crystals += (cworkers * 5) + (energy * 20000) + (wizard * 15);
