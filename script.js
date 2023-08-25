@@ -466,41 +466,5 @@
       loadInitialValues(state);
     }
   });
-  // will work eventually
-  let prestigeCount = 0;
-
-  // Function to handle prestige button click
-  function prestige() {
-    coins = 0;
-    workers = 0;
-    cost = 0;
-    machinesCost = 0;
-    machines = 0;
-    dynamiteCost = 0;
-    dynamite = 0;
-    drillsCost = 0;
-    drills = 0;
-    dupesCost = 0;
-    dupes = 0;
-    cworkersCost = 0;
-    cworkers = 0;
-    crystals = 0;
-    energyCost = 0;
-    energy = 0;
-    relic = 0;
-    
-    prestigeCount++;
-    wizard = prestigeCount;
-    
-    updateCounts();
-    checkCounts();
-    
-    const currentMultiplier = Math.pow(2.5, wizard);
-    document.getElementById("multiplier").textContent = currentMultiplier.toFixed(2);
-    document.getElementById("prestigeCount").textContent = wizard;
-  }
-
-  // Add a click event listener to the prestige button
-  document.getElementById("prestige-button").addEventListener("click", prestige);
 
 })();
